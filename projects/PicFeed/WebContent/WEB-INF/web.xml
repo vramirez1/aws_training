@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>PicFeed</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description>Servlet to Upload Files in S3</description>
+    <display-name>UploadS3Servlet</display-name>
+    <servlet-name>UploadS3Servlet</servlet-name>
+    <servlet-class>com.softtek.practice.ams.cloud.UploadS3Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadS3Servlet</servlet-name>
+    <url-pattern>/Upload</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>View Photo Servlet</description>
+    <display-name>ViewPhotoServlet</display-name>
+    <servlet-name>ViewPhotoServlet</servlet-name>
+    <servlet-class>com.softtek.practice.ams.cloud.ViewPhotoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewPhotoServlet</servlet-name>
+    <url-pattern>/ViewPhoto</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Add Comment to Servlet</description>
+    <display-name>AddCommentServlet</display-name>
+    <servlet-name>AddCommentServlet</servlet-name>
+    <servlet-class>com.softtek.practice.ams.cloud.AddCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCommentServlet</servlet-name>
+    <url-pattern>/AddComment</url-pattern>
+  </servlet-mapping>
+</web-app>
