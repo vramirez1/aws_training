@@ -1,0 +1,81 @@
+Self-Paced Lab: Creating Amazon EC2 Instances for Linux
+
+==================================================================================================================
+
+Using this command reference. 
+
+==================================================================================================================
+
+1. Locate the section you need. Each section in this file matches a section in the lab instructions.
+
+2. Replace items in brackets - [] - with appropriate values. For example, this text might list the following command:
+
+elastic-mapreduce --list [JobFlowID]
+
+You would replace [JobFlowID] with your own value, so that the resulting command might look similar to:
+
+elastic-mapreduce --list 1784BS92
+
+3. Do NOT enable the Word Wrap feature in Windows Notepad or the text editor you use to view this file.
+
+
+
+++++ Create a New Amazon EC2 Server Instance ++++
+
+
+==================================================================================================================
+
+Launch a Linux Instance
+
+==================================================================================================================
+
+
+#!/bin/sh
+yum -y install httpd php
+chkconfig httpd on
+/etc/init.d/httpd start
+
+
+
+
+
+==================================================================================================================
+
+++++ OSX and Linux: Connect to your Amazon EC2 Instance via SSH ++++
+
+Connect to the Amazon EC2 Instance using the OpenSSH CLI client (MAC & LINUX ONLY)
+
+==================================================================================================================
+Replace [qwiklab-l33-5018.pem] with your PEM filename.
+Replace [qwiklab-l33-5018.pem ec2-user@ec2-23-22-87-238.compute-1.amazonaws.com] with the Public DNS of your instance.
+
+
+chmod 600 ~/Downloads/[qwiklab-l33-5018.pem]
+ssh -i ~/Downloads/[qwiklab-l33-5018.pem ec2-user@ec2-23-22-87-238.compute-1.amazonaws.com]
+
+
+==================================================================================================================
+
+Create a PHP Web Page on Your Linux Web Server
+
+==================================================================================================================
+
+
+cd /var/www/html
+sudo nano index.php
+
+
+
+<?php
+  $url = "http://169.254.169.254/latest/meta-data/instance-id";
+  $instance_id = file_get_contents($url);
+  echo "Instance ID: <b>" . $instance_id . "</b><br/>";
+  $url = "http://169.254.169.254/latest/meta-data/placement/availability-zone";
+  $zone = file_get_contents($url);
+  echo "Zone: <b>" . $zone . "</b><br/>";
+?>
+
+
+
+
+© 2014 Amazon Web Services, Inc. or its affiliates. All rights reserved.
